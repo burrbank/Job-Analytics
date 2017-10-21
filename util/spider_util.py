@@ -4,9 +4,8 @@ from multiprocessing import Process
 
 DEFAULT_USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
 
-def run_spider(spider_class, user_agent=DEFAULT_USER_AGENT):
+def run_spider(spider_class, user_agent=DEFAULT_USER_AGENT) -> None:
     """run a crawl for a spider object
-    depreciated
     """
     process = CrawlerProcess({
         'USER_AGENT': user_agent
@@ -15,3 +14,4 @@ def run_spider(spider_class, user_agent=DEFAULT_USER_AGENT):
     inst = spider_class()
     process.crawl(inst)
     process.start(stop_after_crawl=True)
+    return None

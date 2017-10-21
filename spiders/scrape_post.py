@@ -8,7 +8,7 @@ def merge_link(url: str) -> str:
     """merge url with https://www.indeed.ca/"""
     return 'https://www.indeed.ca' + url
 
-def tag_visible(element):
+def tag_visible(element) -> bool:
     """tests if element is a visible element on webpage"""
     if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
         return False
@@ -16,14 +16,14 @@ def tag_visible(element):
         return False
     return True
 
-def text_from_html(body: str):
+def text_from_html(body: str) -> str:
     """selects visible text from html"""
     soup = BeautifulSoup(body, 'html.parser')
     text = soup.findAll(text=True)
     visible_text = filter(tag_visible, text)
     return u' '.join(t.strip() for t in visible_text)
 
-def create_followup(post_urls: str, outfile: str):
+def create_followup(post_urls: str, outfile: str) -> scrapy.Spider:
     """creates followup spider obj
         post_urls: file name of a file containing links to jobposts
         outfile: desired name of output file

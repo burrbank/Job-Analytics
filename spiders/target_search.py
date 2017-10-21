@@ -5,8 +5,10 @@ from time import sleep
 import bs4 as bs
 import scrapy
 
-def create_target_search(target: str, output: str):
-    """ target: the url of the job search
+
+def create_target_search(target: str, output: str) -> scrapy.Spider:
+    """ creates TargetSearch spider obj
+        target: the url of the job search
         output: the name of the output file
 
         Executes the spider dumping the results of the search to output
